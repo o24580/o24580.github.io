@@ -1,0 +1,65 @@
+body {
+    margin:20px;
+    height:100%;
+    flex-direction: column;
+}
+img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+header {
+    height: 40px;
+}
+.ul-header li {
+    width:80px;
+    float: left;
+    list-style-type: none;
+}
+.label-software-name {
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.div-software-description {
+    max-lines: 3;
+    min-height: 100px;
+}
+.label-software-description {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* 显示三行，后面省略 */
+    overflow: hidden;
+}
+.div-product-container {
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-product-first {
+    float:left;
+    width:33%;
+    height: 20vw;
+    border: 1px solid green;
+    background-color: red;
+}
+.div-product-mid {
+    float:left;
+    margin-left:20px;
+    width:33%;
+    height: 20vw;
+    border: 1px solid red;
+    background-color: green;
+}
+.div-product-last {
+    float:left;
+    margin-left:20px;
+    width:33%;
+    height: 20vw;
+    border: 1px solid black;
+    background-color: blue;
+}
