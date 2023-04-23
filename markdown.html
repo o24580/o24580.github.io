@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>在线 Markdown 编辑器</title>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script type="text/javascript">
+            function onContentChanged()
+            {
+                var content = document.getElementById("content").value;
+                var innerHTML = marked.parse(content);
+                document.getElementById("view").innerHTML = innerHTML;
+            }
+            function fillMarkdownContent(filename)
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                    xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                // 得到服务器响应后，对得到的Markdown文档进行解析
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        document.getElementById("content").innerHTML = xmlhttp.responseText;
+                        document.getElementById("view").innerHTML = marked.parse(xmlhttp.responseText);
+                    }
+                }
+                // 向服务器发送请求，获取你需要的Markdown文档
+                xmlhttp.open("GET", "assets/" + filename, true);
+                xmlhttp.send();
+            }
+        </script>
+    </head>
+    <body onload="fillMarkdownContent('OnlineMarkdownEditor.md')">
+        <div style="display: flex; height:100%;">
+            <img style="float:left;" src="assets/OnlineMarkdownEditor.png">
+            <textarea id="content" onkeyup="onContentChanged()" style="float:left;width:49%;min-height:100%;resize:none"></textarea>
+            <label style="width:10px; float:left;"></label>
+            <div id="view" onload="" style="float:left;width:49%;height:100%;overflow:auto;"></div>
+        </div>
+    </body>
+</html>
